@@ -6,7 +6,7 @@ html{
 }
 
 html * {
-    box-sizing: border - box;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,8 +16,10 @@ body {
 
 .wrapper{
     margin: 0 auto 0 auto;
-    max-width: 960px; 
+    max-width: 720px; 
 }
+
+
 
 h2{
     color: #8a2be2;
@@ -35,7 +37,11 @@ h2{
 
 p{
     line-height: 1.6;
+    padding-top:10px;
+    padding-bottom: 10px;
 }
+
+
 
 a:link{
     color: #4682b4;
@@ -44,10 +50,15 @@ a:visited{
     color:#4682B4;
 }
 a:hover{
-    color:#6495ED
+    color:#6495ED;
 }
 a:active{
-    color: #7FFFD4
+    color: #7FFFD4;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
 }
 
 /* すべてのページに適用 - ヘッダー - */
@@ -120,6 +131,19 @@ footer{
 }
 
 /*portal.html*/
+.icon-list {
+  display: flex; /* 直下の要素を横並びにする */
+  gap: 50px; /* アイコン同士の間隔 */
+  justify-content: center; /* 中央寄せ */
+}
+
+.sns-block{
+    display: flex;
+    flex-direction: column; /* flexの並びをたてに */
+    align-items: center; /* 中央ぞろえ */
+    text-decoration: none; /* 下線を消す */
+    color: inherit; /* 色は引き継ぐ */
+}
 
 .sns-block img {
   display: block;
@@ -128,36 +152,162 @@ footer{
 .sns-block img{
     width: 80px;
 	height: 80px;
-	object-fit: cover;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	object-fit: cover; /* アスペクト比を維持、boxと画像の間に空白がある場合は画像を拡大する */
+	border-radius: 50%; /* 50%の半径で角を丸める */
+	cursor: pointer; /* リンク上にあるときのカーソルの形を指定 */
+	transition: transform 0.2s ease, box-shadow 0.2s ease; /* アニメーションの移動時間指定 */
 }
 
-.sns-block img:hover{
-	transform: scale(1.05);
-	box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+.sns-block img:hover{ /* カーソルが画像の上にあるときの画像 */
+	transform: scale(1.05); /* ブロックを1.05倍に */
+	box-shadow: 0 4px 12px rgba(0,0,0,0.25); /* 影をつける */
 }
 
 .sns-block img:active{
 	transform: scale(0.95);
 }
 
-.icon-list {
-  display: flex;
-  gap: 50px; /* アイコン同士の間隔 */
-  justify-content: center;
-}
-
-.sns-block{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-}
-
 .sns-block span{
     margin-top: 8px; /* アイコンとの間隔 */
     font-size: 14px;
+}
+
+/* article.html */
+.kiji{
+    border-bottom: 3px dotted #000000;
+    padding-bottom: 4px;
+}
+
+.articles{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.article{
+    display: flex;
+    align-items: start;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.article img{
+    width: 240px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.article.text{
+    max-width: 600px;
+}
+
+
+.article a{
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    font-size: 125%;
+    padding-top: 0px;
+    margin-bottom: 0px;
+}
+
+.article a:hover{
+    text-decoration: underline;
+}
+
+.article .meta{
+    font-size: 0.75em;
+    color: #666;
+    margin: 0 0 2px;
+}
+
+
+
+/* article */
+.post-time{
+    text-align: right;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 75%;
+    border-bottom: 1px solid #3c454d;
+}
+
+
+
+
+
+/* article-footer */
+.post-navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 2em;
+    padding-top: 1.5em;
+    border-top: 1px solid #ddd;
+    font-family: sans-serif;
+}
+
+.post-navigation a {
+    flex: 1;
+    text-decoration: none;
+    color: #0073e6;
+    padding: 0.8em;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    max-width: 48%;
+}
+
+.post-navigation a:hover{
+    background-color: #f8f9fa;
+}
+
+.post-navigation .label{
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.3em;
+}
+
+.post-navigation .title{
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-navigation .next{
+    text-align: right;
+    padding-left: 1em;
+}
+
+.divider{
+    width: 1px;
+    background-color: #000000;
+}
+
+/* スマホ対応用 */
+@media(max-width: 767px) {
+    /* 全体 ー ナビゲーション */
+    .wrapper{
+        margin: 0 8px;
+    }
+    .logo{
+        margin: 30px 0;
+    }
+    .logo img{
+        width: 200px;
+    }
+    .nav{
+        background-color: #dfddda;
+    }
+    .nav li{
+        display: block;
+    }
 }
