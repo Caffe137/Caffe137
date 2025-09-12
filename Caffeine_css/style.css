@@ -310,4 +310,10 @@ footer{
     .nav li{
         display: block;
     }
+    .article{
+        display: block;
+    }
+    .icon-list{
+        display: block;
+    }
 }
